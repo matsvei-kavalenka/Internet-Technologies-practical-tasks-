@@ -1,0 +1,189 @@
+<!--
+Given HTML document (index.html) append with:
+
+1. A text using h1 element.
+2. Several paragraphs of the selected text (use element <p>). Use 5 different elements to format your text (e.g. <i>, <del> and etc).
+3. 2 images with different sources (one from the source on the Internet, the other from the catalog on the computer). Specify attributes for images alt, width and height.
+4. 3 columns and 3 rows table with a text.
+5. Two different lists: numbered and bulleted. Specify the start attribute for a numbered list.
+6. Two links that would direct the user to web pages on the Internet. Assign one of them to the uploaded image and the other to the text. Specify the target attribute with different values ​​for both links.
+7. Audio and video files from different sources (internet and catalog). Use the appropriate attributes for this.
+8. Element div to which specify the height and width and assign at least 5 different global attributes (see https://www.w3schools.com/tags/ref_standardattributes.asp).
+9. With the copyright symbol © and the desired text, for which you specify the contenteditable attribute with the desired value.
+10. Additional 5 elements that have not yet been used in this work (e.g. iframe).
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    /* Style the top navigation bar */
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+      height: 80px;
+      color: #f2f2f2;
+      padding: 10px;
+    }
+
+    /* Style the topnav links */
+    .topnav a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 35px 16px;
+      text-decoration: none;
+    }
+
+    /* Style the content */
+    .content {
+      background-color: #ddd;
+      padding: 10px;
+      height: 2315px;
+    }
+
+    /* Style the footer */
+    .footer {
+      background-color: #f1f1f1;
+      padding: 10px;
+    }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+
+    hr {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topnav">
+    <p>Header</p>
+  </div>
+
+
+
+  <div class="content">
+    <h1>H1 header</h1>
+
+    <hr>
+    <i>Dog</i>
+    <br>
+    <del>Cats</del>
+    <br>
+    <strong>Good morning</strong>
+    <br>
+    <u>HTML</u>
+    <br>
+    <mark>Text</mark>
+    <hr>
+    <img src="https://i.pinimg.com/736x/99/6c/a6/996ca6d41ae979589d3f50e0967cdcb9.jpg" alt="cat linked" width="500"
+      height="600">
+    <img src="view-beautiful-persian-domestic-cat.jpg" alt="cat computer" width="720" height="480">
+
+    <hr>
+
+    <table style="width:80%">
+      <tr>
+        <th>Cat bald</th>
+        <th>Cat2 fluffy</th>
+        <th>Cat3</th>
+      </tr>
+      <tr>
+        <td>Alfreds</td>
+        <td>Maria</td>
+        <td>German</td>
+      </tr>
+      <tr>
+        <td>----</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h1>An Unordered HTML List</h1>
+
+    <ul>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ul>
+
+    <hr>
+
+    <h1>An Ordered HTML List</h1>
+
+    <ol>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ol>
+
+    <hr>
+
+    <a href="file:///C:/Users/matsv/Downloads/view-beautiful-persian-domestic-cat.jpg" target="_blank">Go to picture</a>
+    <br>
+    <br>
+    <a href="https://www.google.com/" target="_blank">
+      <img src="https://cdn2.hubspot.net/hubfs/53/image8-2.jpg" alt="google logo" width="50" height="50">
+    </a>
+
+
+    <hr>
+
+    <video width="320" height="240" controls>
+      <source src="SpongeBob SquarePants First Episode in 5 Minutes! 🐟 HELP WANTED.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+    </iframe>
+
+    <hr>
+
+
+    <div id="div-add" title="World" draggable="true" class="additional"
+      style="color:red;text-align:center;width:100px;height:100px;border:1px solid black;">
+      <p>Div dragg</p>
+    </div>
+    <hr>
+    <p contenteditable="true">This is an editable paragraph © </p>
+
+    <h2>da</h2>
+    <h3>da</h3>
+    <h4>da</h4>
+    <h5>das</h5>
+    <h6>da</h6>
+  </div>
+
+
+  <div class="footer">
+    <p>Footer</p>
+  </div>
+
+</body>
+
+</html>
