@@ -1,0 +1,255 @@
+<!--
+Given HTML document (index.html) append with:
+
+1. A text using h1 element.
+2. Several paragraphs of the selected text (use element <p>). Use 5 different elements to format your text (e.g. <i>, <del> and etc).
+3. 2 images with different sources (one from the source on the Internet, the other from the catalog on the computer). Specify attributes for images alt, width and height.
+4. 3 columns and 3 rows table with a text.
+5. Two different lists: numbered and bulleted. Specify the start attribute for a numbered list.
+6. Two links that would direct the user to web pages on the Internet. Assign one of them to the uploaded image and the other to the text. Specify the target attribute with different values ​​for both links.
+7. Audio and video files from different sources (internet and catalog). Use the appropriate attributes for this.
+8. Element div to which specify the height and width and assign at least 5 different global attributes (see https://www.w3schools.com/tags/ref_standardattributes.asp).
+9. With the copyright symbol © and the desired text, for which you specify the contenteditable attribute with the desired value.
+10. Additional 5 elements that have not yet been used in this work (e.g. iframe).
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Template</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    h1 {
+      color: purple;
+      text-shadow: #333;
+      letter-spacing: 3px;
+    }
+
+    p {
+      font-style: italic;
+      direction: rtl;
+      font-size: 12px;
+      padding: auto;
+    }
+
+    div {
+      font-family: 'Times New Roman', Times, serif;
+      font-stretch: expanded;
+      cursor: default;
+      outline-style: auto;
+      border: 1px solid black;
+    }
+
+    ul {
+      list-style-type: disc;
+      list-style-position: outside;
+    }
+
+    a {
+      background-color: lightcoral;
+      text-decoration: underline;
+    }
+
+    /* Style the top navigation bar */
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+      height: 80px;
+      color: #f2f2f2;
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Style the topnav links */
+    .topnav a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 35px 16px;
+      text-decoration: none;
+    }
+
+    /* Style the content */
+    .content {
+      background-color: #ddd;
+      padding: 10px;
+      height: 2200px;
+    }
+
+    /* Style the footer */
+    .footer {
+      background-color: #f1f1f1;
+      padding: 10px;
+    }
+
+    table,
+    th,
+    td {
+      letter-spacing: 1px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      text-align: left;
+      padding: auto;
+      border: 1px solid plum;
+      background-color: beige;
+    }
+
+    th {
+      text-align: center;
+      font-size: 15px;
+    }
+
+    hr {
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    .bordered {
+      margin-left: 30px;
+      border: 10px thick;
+      border-style: dashed;
+      border-color: black;
+    }
+
+    .filtered {
+      filter: blur(1px);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="topnav">
+    <h2 style="padding: 0;">Main Page</h2>
+    <p>H</p>
+  </div>
+
+
+
+  <div class="content">
+    <h1>H1 header</h1>
+    <hr>
+    <i>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</i>
+    <del>Suspendisse ultrices fermentum massa, vel varius nisl euismod varius.</del>
+    <strong>Praesent risus mauris, porttitor in ex ac, molestie fringilla ante. </strong>
+    <u>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</u>
+    <mark>Phasellus in sem dui. Integer efficitur egestas lectus.</mark>
+    <hr>
+    <img class="filtered" src="https://i.pinimg.com/736x/99/6c/a6/996ca6d41ae979589d3f50e0967cdcb9.jpg" alt="cat linked"
+      width="200" height="240">
+    <img class="bordered" src="view-beautiful-persian-domestic-cat.jpg" alt="cat computer" width="360" height="240">
+
+    <hr>
+
+    <table class="table">
+      <colgroup>
+        <col span="2" style="background-color:blueviolet">
+        <col style="background-color:greenyellow">
+      </colgroup>
+      <tr>
+        <th>Lorem ipsum</th>
+        <th>Dolor sit</th>
+        <th>Amet</th>
+      </tr>
+      <tr>
+        <td>Consectetur</td>
+        <td>Adipiscing</td>
+        <td>Elit</td>
+      </tr>
+      <tr>
+        <td>Suspendisse ultrices</td>
+        <td>Fermentum massa</td>
+        <td>Vel varius</td>
+      </tr>
+      <tr>
+        <td>Nisl euismod varius</td>
+        <td>Praesent risus mauris</td>
+        <td>Porttitor in ex ac</td>
+      </tr>
+      <tr>
+
+        <td>Molestie fringilla ante</td>
+        <td rowspan="2">Lorem ipsum dolor</td>
+        <td>Sit amet</td>
+      </tr>
+    </table>
+
+    <hr>
+
+    <h2>An Unordered HTML List</h2>
+    <ul>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ul>
+
+    <hr>
+
+    <h2>An Ordered HTML List</h2>
+    <ol>
+      <li>Coffee</li>
+      <li>Tea</li>
+      <li>Milk</li>
+    </ol>
+
+    <hr>
+
+    <a href="view-beautiful-persian-domestic-cat.jpg" target="_blank" style="background-color: transparent;color: black;">Go to
+      picture</a>
+    <br>
+    <br>
+    <a href="https://www.google.com/" target="_blank">
+      <img src="https://cdn2.hubspot.net/hubfs/53/image8-2.jpg" alt="google logo" width="50" height="50">
+    </a>
+
+    <hr>
+
+    <video width="400" height="300" controls style="margin-bottom: 20px;">
+      <source src="SpongeBob SquarePants First Episode in 5 Minutes! 🐟 HELP WANTED.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <iframe width="400" height="300" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+    </iframe>
+
+    <hr>
+
+
+    <div id="div-add" title="World" draggable="true" class="additional"
+      style="color:black;align-items: center;width:100px;height:100px;border:1px solid black;">
+      <p style="font-size: 14px;text-align: center;">Draggable container</p>  
+    </div>
+    <hr>
+    <p contenteditable="true">This is an editable paragraph © </p>
+
+    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+    <h3>Suspendisse ultrices fermentum massa, vel varius nisl euismod varius.</h3>
+    <h4>Praesent risus mauris, porttitor in ex ac, molestie fringilla ante.</h4>
+    <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+    <h6>Phasellus in sem dui. Integer efficitur egestas lectus.</h6>
+
+    <a href="file2/index2.html" style="background-color: transparent;color:grey">Second File</a>
+  </div>
+
+
+  <div class="footer">
+    <p>Footer</p>
+  </div>
+
+</body>
+
+</html>
