@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 1000px;
+}
+
+.navbar {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid black;
+    font-family: "SE Inter", "Space Grotesk", Helvetica, sans-serif;
+    align-items: center;
+    overflow: hidden;
+    width: 100%;
+    height: 60px;
+    z-index: 1000;
+    background-color: white;
+}
+
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropbtn {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    color: #1b4d7a;
+    padding: 14px 16px;
+    background-color: inherit;
+    margin: 0;
+    cursor: pointer;
+}
+
+.dropbtn.active {
+    text-decoration: underline;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: #1b4d7a;
+    text-decoration: none;
+    padding: 14px 16px;
+    font-size: 17px;
+    min-width: 100px;
+    display: block;
+    text-align: left;
+
+}
+
+.dropdown-content a:hover {
+    text-decoration: underline;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    position: fixed;
+}
+
+.content {
+    top: 60px;
+    position: relative;
+    width: 100%;
+    height: 700px;
+}
+
+.product_full {
+    position: relative;
+    margin: 10px 10px 10px 10px;
+    top: 100px;
+}
+
+.product_full img {
+    width: 30%;
+    height: auto;
+    margin: 10px 10px 10px 10px;
+    border-radius: 10px;
+}
+
+.product_full p {
+    font-size: 14px;
+    width: 70%;
+}
+
+
+.box {
+    background-color: #006699;
+    margin: 0 auto;
+    width: 100%;
+    height: 700px;
+    position: relative;
+    box-shadow: inset 0 0 50px #155;
+    border: 1px solid #111;
+    overflow: hidden;
+}
+
+.box b {
+
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 0;
+    border-radius: 50%;
+    position: relative;
+    background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
+
+    box-shadow: inset -5px -5px 5px rgba(0, 0, 0, .6), 15px 15px 2px rgba(0, 0, 0, .04);
+    position: absolute;
+    -webkit-animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
+    -moz-animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
+    -o-animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
+    animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
+}
+
+@-webkit-keyframes moveX {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: calc(100% - 150px);
+    }
+}
+
+@-moz-keyframes moveX {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: calc(100% - 150px);
+    }
+}
+
+@-o-keyframes moveX {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: calc(100% - 150px);
+    }
+}
+
+@keyframes moveX {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: calc(100% - 150px);
+    }
+}
+
+@-webkit-keyframes moveY {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 550px;
+    }
+}
+
+@-moz-keyframes moveY {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 550px;
+    }
+}
+
+@-o-keyframes moveY {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 550px;
+    }
+}
+
+@keyframes moveY {
+    from {
+        top: 0;
+    }
+
+    to {
+        top: 550px;
+    }
+}
