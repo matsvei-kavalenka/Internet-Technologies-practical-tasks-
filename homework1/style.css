@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    height: 1000px;
-}
-
 .navbar {
     position: fixed;
     display: flex;
@@ -17,9 +13,15 @@ body {
     align-items: center;
     overflow: hidden;
     width: 100%;
-    height: 60px;
+    height: 55px;
     z-index: 1000;
     background-color: white;
+}
+
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .dropdown {
@@ -43,12 +45,15 @@ body {
 }
 
 .dropdown-content {
+    margin-top: 3px;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
     min-width: 100px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
+    border: 2px solid black;
+    border-top: none;
 }
 
 .dropdown-content a {
@@ -73,10 +78,77 @@ body {
 }
 
 .content {
-    top: 60px;
+    top: 55px;
     position: relative;
     width: 100%;
-    height: 700px;
+    border: none;
+}
+
+.recipes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: left;
+}
+
+.short_recipe_info{
+    display: flex;
+    align-items: flex-start;
+    margin: 1% 1% 1% 1%;
+    min-width:  400px;
+    width: 31%;
+    padding-bottom: 16%;
+    height: 300px;
+    border: 1px solid black;
+}
+
+.short_recipe_info .dish{
+    margin: 25px 25px 25px 25px;
+    width: 40%;
+}
+
+.short_recipe_info img[alt="clock"]{
+    height: 25px;
+}
+
+.short_recipe_info img[alt="calories"]{
+    height: 25px;
+}
+
+
+
+.short_recipe_info h1{
+    font-size: 36px;
+    margin-top: 25px;
+}
+
+.box {
+    width: 100%;
+    height: 85vh;
+    position: relative;
+    background: #ffdedc;
+    background-image: url('img/people_home.jpg');
+    background-repeat: no-repeat;
+    background-position: center;;
+    background-size: contain;
+    overflow: hidden;
+}
+
+.box b {
+    display: block;
+    width: 150px;
+    height: 150px;
+    margin: 0;
+    border-radius: 50%;
+    position: relative;
+    background-image: url('img/pizza.png');
+    background-size: cover;
+    position: absolute;
+    -webkit-animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
+    -moz-animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
+    -o-animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
+    animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
 }
 
 .product_full {
@@ -98,33 +170,15 @@ body {
 }
 
 
-.box {
-    background-color: #006699;
-    margin: 0 auto;
+.footer{
+    margin-top: 55px;
+    padding-left: 15px;
     width: 100%;
-    height: 700px;
-    position: relative;
-    box-shadow: inset 0 0 50px #155;
-    border: 1px solid #111;
-    overflow: hidden;
-}
-
-.box b {
-
-    display: block;
-    width: 150px;
-    height: 150px;
-    margin: 0;
-    border-radius: 50%;
-    position: relative;
-    background: radial-gradient(circle at 50% 120%, #81e8f6, #76deef 10%, #055194 80%, #062745 100%);
-
-    box-shadow: inset -5px -5px 5px rgba(0, 0, 0, .6), 15px 15px 2px rgba(0, 0, 0, .04);
-    position: absolute;
-    -webkit-animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
-    -moz-animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
-    -o-animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
-    animation: moveX 6s linear 0s infinite alternate, moveY 7.4s linear 0s infinite alternate;
+    height: 40px;
+    border-top: 1px solid black;
+    font-family: "SE Inter", "Space Grotesk", Helvetica, sans-serif;
+    font-size: 14px;
+    padding-top: 10px;
 }
 
 @-webkit-keyframes moveX {
@@ -173,7 +227,7 @@ body {
     }
 
     to {
-        top: 550px;
+        top: calc(85vh - 150px);;
     }
 }
 
@@ -183,7 +237,7 @@ body {
     }
 
     to {
-        top: 550px;
+        top: calc(85vh - 150px);;
     }
 }
 
@@ -193,7 +247,7 @@ body {
     }
 
     to {
-        top: 550px;
+        top: calc(85vh - 150px);;
     }
 }
 
@@ -203,6 +257,6 @@ body {
     }
 
     to {
-        top: 550px;
+        top: calc(85vh - 150px);;
     }
 }
