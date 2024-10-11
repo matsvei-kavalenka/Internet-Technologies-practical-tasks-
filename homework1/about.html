@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>My recipes</title>
+
 </head>
 
 <body>
@@ -15,7 +16,7 @@
         </div>
 
         <div class="dropdown">
-            <button class="dropbtn active" onclick="location.href = 'myRecipes.html';">My List</button>
+            <button class="dropbtn" onclick="location.href = 'myRecipes.html';">My List</button>
             <div class="dropdown-content">
                 <a href="product.html?id=1">Lasagna</a>
                 <a href="product.html?id=2">Paella</a>
@@ -23,14 +24,42 @@
             </div>
         </div>
         <div class="dropdown" onclick="location.href = 'about.html';">
-            <button class="dropbtn">About</button>
+            <button class="dropbtn  active">Contacts</button>
         </div>
 
     </div>
 
 
     <div class="contact">
-        <form>
+        <div class="contacts__single">
+            <span class="text block title">
+                <strong>
+                    Contact us
+                </strong>
+            </span>
+
+
+            <a href="tel:+37062402733" class="text-small block">
+                Tel. +370 624 88 799
+            </a>
+
+
+
+            <a href="info@cooklove.lt" class="text-small block">
+                info@cooklove.lt
+            </a>
+
+            <span class="text-small block">
+                Response time:
+            </span>
+
+            <span class="text-small block">
+                I-V 10:00-21:00
+            </span>
+
+
+        </div>
+        <form id="contactForm">
             <div class="form-row">
                 <div class="form-group">
                     <label for="first_name">First name <span class="required">*</span></label>
@@ -50,11 +79,44 @@
                 <textarea id="message" name="message" maxlength="2000"></textarea>
             </div>
             <div class="form-group">
-                <button type="submit">Submit</button>
+                <button type="submit" id="submitBtn">
+                    <span>Submit</span>
+                    <img src="https://i.cloudup.com/2ZAX3hVsBE-3000x3000.png" height="62" width="62" alt="submit">
+                </button>
             </div>
         </form>
+        
+        <div id="responseMessage"></div>
+        <script>
+            document.getElementById('contactForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+        
+                const submitButton = document.getElementById('submitBtn');
+                submitButton.focus();
+        
+                setTimeout(async function() {
+                    const formData = new FormData(this);
+        
+                    try {
+                        const response = await fetch('/your-server-endpoint', {
+                            method: 'POST',
+                            body: formData,
+                        });
+        
+                        if (response.ok) {
+                            const result = await response.json();
+                            document.getElementById('responseMessage').innerText = result.message;
+                        } else {
+                            throw new Error('Network response was not ok');
+                        }
+                    } catch (error) {
+                        console.error('There was a problem with your fetch operation:', error);
+                    }
+                    location.reload()
+                }.bind(this), 2000);
+            });
+        </script>
     </div>
-
     <div class="footer">
         <p>&copy; 2024 Your Website Name. All rights are protected</p>
     </div>

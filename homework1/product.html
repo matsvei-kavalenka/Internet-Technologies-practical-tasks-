@@ -1,73 +1,173 @@
-<!-- product.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="product-details"></div>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id');
 
-        const products = {
-            1: {
-                name: "Classic lasagna",
-                ingredients: "Mussels in shells (and without) - 100g, tomato - 200g, onion - 160g, Lasagne sheets (8-10 pieces), garlic (2 cloves), Tomato paste - 60g, cheese - 100g, olive oil -  1 tablse sp., butter - 50 g, milk - 600g, wheat flour - 65g,  allspice - to taste",
-                description: "Full description of Product 1", 
-                img: "img/lazanya.jpg",
-                price: "$100"
-            },
-            2: {
-                name: "Product 2",
-                description: "Full description of Product 2.",
-                price: "$200"
-            }
-        };
+        fetch('products.json')
+            .then(response => response.json())
+            .then(products => {
+                const product = products[productId];
 
-        const product = products[productId];
 
-        if (product) {
-            document.getElementById("product-details").innerHTML = `
-                    <div class="navbar">
-                        <div class="dropdown">
-                            <button class="dropbtn" onclick="location.href = 'index.html';">Home</button>
-                        </div>
+                if (product) {
+                    // --------------------navbar--------------------
+                    const navbarDiv = document.createElement('div');
+                    navbarDiv.classList.add('navbar');
 
-                        <div class="dropdown">
-                            <button class="dropbtn active" onclick="location.href = 'myRecipes.html';">My List</button>
-                            <div class="dropdown-content">
-                                <a href="product.html?id=1">Link 1</a>
-                                <a href="product.html?id=2">Link 2</a>
-                                <a href="product.html?id=3">Link 3</a>
-                            </div>
-                        </div>
-                        <div class="dropdown" onclick="location.href = 'about.html';">
-                            <button class="dropbtn">About</button>
-                        </div>
+                    const dropdownDiv = document.createElement('div');
+                    navbarDiv.appendChild(dropdownDiv);
+                    dropdownDiv.classList.add('dropdown');
 
-                    </div>
-                    <div class="product_full">
-                        <h1>${product.name}</h1>
-                        <img src="${product.img}" alt="${product.img}">
+                    const dropbtn = document.createElement('button');
+                    dropbtn.classList.add('dropbtn');
+                    dropbtn.onclick = () => location.href = 'index.html';
+                    dropbtn.textContent = 'Home';
+                    navbarDiv.appendChild(dropbtn);
 
-                        <h3>INGREDIENTS:</h3>
-                        <p>${product.ingredients}</p>
-                        <br>
-                        <h3>STEP BY STEP PREPARATION:</h3>
-                        <p>${product.description}</p>
-                    </div>
-            `
-        } 
-        else {
-            document.getElementById("product-details").innerHTML = `
+                    const dropdownDiv2 = document.createElement('div');
+                    navbarDiv.appendChild(dropdownDiv2);
+                    dropdownDiv2.classList.add('dropdown');
+
+                    const dropbtn2 = document.createElement('button');
+                    dropbtn2.classList.add('dropbtn');
+                    dropbtn2.classList.add('active');
+                    dropbtn2.onclick = () => location.href = 'myRecipes.html';
+                    dropbtn2.textContent = 'My List';
+                    dropdownDiv2.appendChild(dropbtn2);
+
+                    const dropdownContent = document.createElement('div');
+                    dropdownContent.classList.add('dropdown-content');
+                    dropdownDiv2.appendChild(dropdownContent);
+
+                    const link1 = document.createElement('a');
+                    link1.href = 'product.html?id=1';
+                    link1.textContent = 'Lasagna';
+
+                    const link2 = document.createElement('a');
+                    link2.href = 'product.html?id=2';
+                    link2.textContent = 'Paella';
+
+                    const link3 = document.createElement('a');
+                    link3.href = 'product.html?id=3';
+                    link3.textContent = 'Plov';
+
+                    dropdownContent.appendChild(link1);
+                    dropdownContent.appendChild(link2);
+                    dropdownContent.appendChild(link3);
+
+                    const dropdownDiv3 = document.createElement('div');
+                    navbarDiv.appendChild(dropdownDiv3);
+                    dropdownDiv3.classList.add('dropdown');
+                    dropdownDiv3.onclick = () => location.href = 'about.html';
+
+                    const dropbtn3 = document.createElement('button');
+                    dropbtn3.classList.add('dropbtn');
+                    dropbtn3.textContent = 'Contacts';
+                    dropdownDiv3.appendChild(dropbtn3);
+
+                    // --------------------product_full--------------------
+
+                    const product_full = document.createElement('div');
+                    product_full.classList.add('product_full');
+
+                    const recipe_header = document.createElement('div');
+                    recipe_header.classList.add('recipe_header');
+
+                    const recipe_img = document.createElement('div');
+                    recipe_img.classList.add('recipe_img');
+                    recipe_header.appendChild(recipe_img);
+
+                    const img = document.createElement('img');
+                    img.src = product.img;
+                    img.alt = product.name;
+                    recipe_img.appendChild(img);
+
+                    const ingredients = document.createElement('div');
+                    ingredients.classList.add('ingredients');
+                    recipe_header.appendChild(ingredients);
+
+                    const h1 = document.createElement('h1');
+                    h1.textContent = product.name;
+                    ingredients.appendChild(h1);
+
+                    const h3 = document.createElement('h3');
+                    h3.textContent = 'INGREDIENTS:';
+                    ingredients.appendChild(h3);
+
+                    const ul = document.createElement('ul');
+                    ingredients.appendChild(ul);
+                    product.ingredients.forEach((step, index) => {
+                        const li = document.createElement('li');
+                        li.textContent = product.ingredients[index];
+                        ul.appendChild(li);
+                    });
+
+
+                    const br = document.createElement('br');
+                    ingredients.appendChild(br);
+
+                    product_full.appendChild(recipe_header);
+
+
+                    const stepsContainer = document.createElement('div');
+                    stepsContainer.classList.add('steps_container');
+                    product_full.appendChild(stepsContainer);
+
+                    product.steps.forEach((step, index) => {
+                        const stepDiv = document.createElement('div');
+                        stepDiv.classList.add('step');
+
+                        const stepTitle = document.createElement('h2');
+                        stepTitle.textContent = `Step ${index + 1}:`;
+                        stepDiv.appendChild(stepTitle);
+
+                        if (product.steps_images[index]) {
+                            const stepImg = document.createElement('img');
+                            stepImg.src = product.steps_images[index];
+                            stepImg.alt = `Step ${index + 1}`;
+                            stepDiv.appendChild(stepImg);
+                        }
+
+                        const stepDescription = document.createElement('p');
+                        stepDescription.textContent = step;
+                        stepDiv.appendChild(stepDescription);
+
+                        stepsContainer.appendChild(stepDiv);
+                    });
+
+                    const footerDiv = document.createElement('div');
+                    footerDiv.classList.add('footer');
+
+                    const footerText = document.createElement('p');
+                    footerText.innerHTML = '&copy; 2024 Your Website Name. All rights are protected';
+
+                    footerDiv.appendChild(footerText);
+
+                    document.body.appendChild(footerDiv);
+                    document.body.appendChild(navbarDiv);
+                    document.body.appendChild(product_full);
+                    document.body.appendChild(footerDiv);
+                } else {
+                    document.getElementById("product-details").innerHTML = `
                 <h1>Product not found</h1>
             `;
-        }
+                }
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+
     </script>
+
 </body>
+
 </html>

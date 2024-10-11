@@ -4,6 +4,12 @@
     box-sizing: border-box;
 }
 
+img {
+    -webkit-user-drag: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 .navbar {
     position: fixed;
     display: flex;
@@ -13,15 +19,9 @@
     align-items: center;
     overflow: hidden;
     width: 100%;
-    height: 70px;
+    height: 60px;
     z-index: 1000;
     background-color: white;
-}
-
-img {
-    -webkit-user-drag: none;
-    user-select: none;
-    -webkit-user-select: none;
 }
 
 .dropdown {
@@ -45,7 +45,7 @@ img {
 }
 
 .dropdown-content {
-    margin-top: 7px;
+    margin-top: 1px;
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -78,11 +78,11 @@ img {
 }
 
 .content {
-    top: 70px;
+    top: 60px;
     position: relative;
     width: 100%;
     border: none;
-    
+
 }
 
 .recipes {
@@ -93,15 +93,14 @@ img {
     flex-wrap: wrap;
     align-content: flex-start;
     -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: left;
     -webkit-box-align: stretch;
     align-items: stretch;
     margin: 1rem 0 .5rem 0;
     gap: 15px;
     padding-left: 15px;
     padding-right: 15px;
-    padding-bottom: 25px;
+    padding-bottom: 5px;
 }
 
 @media (min-width: 500px) {
@@ -164,7 +163,6 @@ img {
 .short_recipe_info .title_div h3 {
     font-size: 1.4rem;
     margin-bottom: 0;
-    
     margin-right: 15px;
 }
 
@@ -175,7 +173,7 @@ img {
 
 .short_recipe_info .title_div .time p {
     font-size: 1rem;
-    margin-bottom: 0;
+    padding-right: 50px;
 }
 
 .short_recipe_info img[alt="clock"] {
@@ -185,11 +183,12 @@ img {
 
 .box {
     width: 100%;
-    height: 85vh;
+    height: 90vh;
     position: relative;
     background-image: url('img/people_home.jpg');
     background-repeat: no-repeat;
-    background-position: center;;
+    background-position: center;
+    ;
     background-size: contain;
     background-color: #ffdedc;
     overflow: hidden;
@@ -214,43 +213,121 @@ img {
 
 .product_full {
     position: relative;
-    margin: 10px 10px 10px 10px;
-    top: 100px;
+    top: 60px;
+    padding-left: 50px;
 }
 
-.product_full img {
-    width: 30%;
+.recipe_header {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 2rem;
+    padding-top: 25px;
+    margin-bottom: 40px;
+}
+
+.recipe_header .ingredients h1 {
+    padding-top: 5px;
+    font-size: 3rem;
+    margin-bottom: 25px;
+}
+
+.recipe_header h3 {
+    font-size: 1.6rem;
+}
+
+
+
+.recipe_img img {
+    width: 90%;
     height: auto;
     margin: 10px 10px 10px 10px;
     border-radius: 10px;
 }
 
-.product_full p {
-    font-size: 14px;
-    width: 70%;
+
+.recipe_header p {
+    font-size: 1.4rem;
+    width: 85%;
+}
+
+.ingredients li {
+    font-size: 24px;
+    margin-left: 25px;
+}
+
+
+@media (max-width: 600px) {
+    .product_full {
+        padding-left: 0px;
+    }
+
+    .recipe_header img {
+        margin: 0;
+    }
+
+    .recipe_header .recipe_img img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    .recipe_header .ingredients {
+        margin-left: 15px;
+    }
+}
+
+.steps_container {
+    width: 80%;
+    display: flex;
+    justify-content: left;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    font-family: Arial, sans-serif;
+    margin-bottom: 45px;
+}
+
+.step h2 {
+    font-size: 1.8rem;
+    width: 80%;
+}
+
+.step p {
+    font-size: 1.2rem;
+    width: 80%;
+}
+
+.step img {
+    width: 80%;
+    height: auto;
+    border-radius: 10px;
+    margin: 5px 0px 10px 0px;
+}
+
+@media (max-width: 600px) {
+
+    .step,
+    .step h2,
+    .step p,
+    .step img {
+        width: 90%;
+    }
+
+    .steps_container {
+        width: 100%;
+        justify-content: center;
+        padding-left: 0px;
+    }
+
 }
 
 @-webkit-keyframes moveX {
-    from {
-        left: 0;
-    }
-
-    to {
-        left: calc(100% - 150px);
-    }
-}
-
-@-moz-keyframes moveX {
-    from {
-        left: 0;
-    }
-
-    to {
-        left: calc(100% - 150px);
-    }
-}
-
-@-o-keyframes moveX {
     from {
         left: 0;
     }
@@ -280,26 +357,6 @@ img {
     }
 }
 
-@-moz-keyframes moveY {
-    from {
-        top: 0;
-    }
-
-    to {
-        top: calc(85vh - 150px);
-    }
-}
-
-@-o-keyframes moveY {
-    from {
-        top: 0;
-    }
-
-    to {
-        top: calc(85vh - 150px);
-    }
-}
-
 @keyframes moveY {
     from {
         top: 0;
@@ -310,21 +367,51 @@ img {
     }
 }
 
-.contact{
+.contact {
     top: 70px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 200px;
+    flex-wrap: wrap;
     width: 100%;
     padding: 10px;
     min-height: 90vh;
 }
 
+.contacts__single {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 200px;
+}
+
+.block {
+    display: block;
+}
+
+.text-small {
+    font-size: 25px;
+    line-height: 35px;
+}
+
+.text strong {
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 45px;
+}
+
 
 form {
     width: 400px;
-    margin: 0 auto;
+    max-width: 95%;
+    margin: 0;
     padding: 20px;
     background-color: #f9f9f9;
+    border: 1px solid black;
+    padding-bottom: 65px;
     border-radius: 10px;
+    height: fit-content;
 }
 
 .form-row {
@@ -356,7 +443,7 @@ input[type="email"],
 textarea {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-radius: 4px;
     font-size: 14px;
 }
@@ -372,8 +459,182 @@ textarea {
     color: red;
 }
 
-.footer{
-    margin-top: 70px;
+
+
+
+@-webkit-keyframes extend {
+    0% {
+        width: 360px;
+        height: 60px;
+        border-radius: 100px;
+    }
+
+    10% {
+        width: 370px;
+        height: 65px;
+        background: #fff;
+        margin-left: - 5px;
+        margin-top: - 5px;
+    }
+
+    20% {
+        width: 360px;
+        height: 60px;
+        background: #6fb07f;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+    100% {
+        width: 60px;
+        height: 60px;
+        border-radius: 100px;
+        margin-left: 130px;
+        background: #6fb07f;
+    }
+}
+
+@keyframes extend {
+    0% {
+        width: 360px;
+        height: 60px;
+        border-radius: 100px;
+    }
+
+    10% {
+        width: 370px;
+        height: 65px;
+        background: #fff;
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+
+    20% {
+        width: 360px;
+        height: 60px;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+    100% {
+        width: 60px;
+        height: 60px;
+        border-radius: 100px;
+        margin-left: 160px;
+        border: none;
+        background: #6fb07f;
+    }
+}
+
+@-webkit-keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+
+    20% {
+        color: #fff;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+
+    20% {
+        color: #fff;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+@-webkit-keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    70% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+    }
+
+    70% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+.form-group button {
+    position: relative;
+    border-width: 1px;
+    width: 360px;
+    height: 60px;
+    max-width: 80%;
+    border-radius: 100px;
+    background: #fff;
+    position: absolute;
+    border: 3px solid black;
+}
+
+.form-group button>span {
+    font-size: 24px;
+    color: black;
+}
+
+.form-group img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: 0;
+    transform: scale(0.6);
+}
+
+.form-group button:focus {
+    -webkit-animation: extend 1s ease-in-out;
+    animation: extend 1s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards
+}
+
+.form-group button:focus>span {
+    -webkit-animation: disappear 1s ease-in-out;
+    animation: disappear 1s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards
+}
+
+.form-group button:focus>img {
+    -webkit-animation: appear 1s ease-in-out;
+    animation: appear 1s ease-in-out;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards
+}
+
+.footer {
+    margin-top: 60px;
     padding-left: 15px;
     width: 100%;
     height: 40px;

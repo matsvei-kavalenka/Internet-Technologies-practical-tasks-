@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Animation practical lesson</title>
+    <style type="text/css">
+        .square {
+            width: 150px;
+            height: 150px;
+            background: yellow;
+            position: absolute;
+            margin-left: 100px;
+            margin-top: 100px;
+            border: solid 1px black;
+            text-align: center;
+            animation: square 10s ease 5s 2 alternate;
+            -webkit-animation: square 10s ease-in-out 5s 2 alternate;
+            -moz-animation: square 10s ease-in-out 5s 2 alternate;
+            -o-animation: square 10s ease-in-out 5s 2 alternate;
+            animation: square 10s ease-in-out 5s 2 alternate;
+        }
+
+        @-webkit-keyframes square {
+            0% {
+                background: yellow;
+                margin-left: 100px;
+                margin-top: 100px;
+            }
+
+            25% {
+                margin-top: 200px;
+                margin-left: 1000px;
+                background-color: blue;
+                transform: scale(0.5);
+            }
+
+            50% {
+                margin-top: 700px;
+                margin-left: 900px;
+                background-color: purple;
+                transform: scale(1.1);
+            }
+
+            75% {
+                margin-top: 500px;
+                margin-left: 300px;
+                background-color: red;
+                transform: scale(1.5);
+            }
+
+            100% {
+                margin-top: 100px;
+                margin-left: 100px;
+                background-color: orange;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="square">
+        <h4>CSS3 animation</h4>
+    </div>
+</body>
+
+</html>

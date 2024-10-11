@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        .header {
+            padding: 60px;
+            text-align: center;
+            background: #122d61;
+            color: white;
+        }
+
+        .navbar {
+            display: flex;
+            background-color: #333;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .side {
+            flex: 30%;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        .main {
+            flex: 70%;
+            background-color: white;
+            padding: 20px;
+        }
+
+        .fakeimg {
+            background-color: #aaa;
+            width: 100%;
+            padding: 20px;
+        }
+
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background: #ddd;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Header</h1>
+    </div>
+    <div class="navbar">
+        <a href="#">link_1</a>
+        <a href="#">link_2</a>
+    </div>
+    <div class="row">
+        <div class="side">
+            <h2>h2 text</h2>
+            <h5>h5 text</h5>
+            <div class="fakeimg" style="height:200px;">image</div>
+            <p>Paragraph with any text</p>
+            <h3>h3 text</h3>
+            <p>Paragraph with any text</p>
+            <div class="fakeimg" style="height:60px;">image</div><br>
+            <div class="fakeimg" style="height:60px;">image</div><br>
+            <div class="fakeimg" style="height:60px;">image</div>
+        </div>
+        <div class="main">
+            <h2>h2 text</h2>
+            <h5>h5 text</h5>
+            <div class="fakeimg" style="height:200px;">image</div>
+            <p>Paragraph with any text</p>
+            <p>Paragraph with any text</p>
+            <br>
+            <h2>h2 text</h2>
+            <h5>h5 text</h5>
+            <div class="fakeimg" style="height:200px;">image</div>
+            <p>Paragraph with any text</p>
+            <p>Paragraph with any text</p>
+        </div>
+    </div>
+    <div class="footer">
+        <h2>Footer</h2>
+    </div>
+</body>
+
+</html>
