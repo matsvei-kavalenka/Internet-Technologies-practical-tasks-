@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // Task 1
+    function task1() {
+        let a = 10;
+        let b = 20;
+        document.write("The result of multiplying a and b is: " + a*b);
+        document.write("<br>");
+    }
+
+    // Task 2
+    function task2() {
+        var s = window.prompt("Please enter smth:");
+        document.write("You entered: " + s);
+    }
+
+    // Task 3
+    function task3() {
+        var s = window.prompt("Please enter smth:");
+        window.alert("You entered: " + s);
+    }
+
+    // Task 4
+    function task4() {
+        var userResponse = window.confirm("Do you want to view the next page?");
+
+        if (userResponse) {
+            window.location.href = "https://www.google.com";
+        } else {
+            document.write("Same page");
+        }
+    }
+
+    // Task 5
+    function task5() {
+        document.write("Hello! Here I am!");
+    }
+
+    // Task 6
+    function task6() {
+        var daysOfWeek = [
+            "Monday",    
+            "Tuesday",   
+            "Wednesday", 
+            "Thursday",  
+            "Friday",    
+            "Saturday",  
+            "Sunday"    
+        ];
+        var number = parseInt(window.prompt("Enter a number between 1 and 7:"), 10);
+        
+        var day = daysOfWeek[number - 1] || "Invalid input. Please enter a number from 1 to 7.";
+        
+        document.write(day);
+    }
+
+    // Task 7
+    function task7(){
+        var number = parseInt(window.prompt("Enter your age:"), 10);
+
+        if (number < 0){
+            document.write("Invalid value");
+        } 
+        else if (number < 3){
+            document.write("Baby");
+        }
+        else if (number < 12){
+            document.write("Child");
+        }
+        else if (number < 18){
+            document.write("Teenager");
+        }
+        else{
+            document.write("Adult");
+        }
+    }
+
+    // Task 8
+    function task8(){
+        const students = ["Matsvei", "Zlata", "Vlad", "Lena", "Karyna"];
+        const pos = ["first", "second", "third", "fourth", "fifth"];
+        for (let i = 0; i < students.length; i++){
+            window.alert("Student " + students[i] + " is the " + pos[i] + " in the list"+"<br>");
+        }
+    }
+
+    // Task 9
+    function task9(){
+        var header = document.createElement("h2");
+        header.id = "header";
+        header.textContent = "Heading";
+
+        var p1 = document.createElement("p");
+        p1.id = "p1";
+        p1.textContent = "The first paragraph.";
+
+        var divElement = document.createElement("div");
+        divElement.id = "myDiv";
+        divElement.textContent = "Div element";
+
+        var p2 = document.createElement("p");
+        p2.id = "p2";
+        p2.textContent = "The second paragraph.";
+
+        var button = document.createElement("button");
+        button.id = "colorButton";
+        button.textContent = "Change colors";
+
+        document.body.appendChild(header);
+        document.body.appendChild(p1);
+        document.body.appendChild(divElement);
+        document.body.appendChild(p2);
+        document.body.appendChild(button);
+
+        button.ondblclick = function() {
+            document.getElementById("header").style.color = "red";
+            document.getElementById("p1").style.color = "blue";
+            document.getElementById("myDiv").style.color = "purple";
+            document.getElementById("p2").style.color = "orange";
+        }; 
+    }
+
+    // Task 10
+    function task10(){
+        var form = document.createElement("form");
+
+        var textarea = document.createElement("textarea");
+        textarea.id = "textarea1";
+        textarea.placeholder = "Enter text";
+        
+        var password = document.createElement("input");
+        password.type = "password";
+        password.id = "password1";
+        password.placeholder = "Enter password";
+
+        var select = document.createElement("select");
+        select.id = "select1";
+
+        var option1 = document.createElement("option");
+        option1.value = "Option 1";
+        option1.textContent = "Option 1";
+
+        var option2 = document.createElement("option");
+        option2.value = "Option 2";
+        option2.textContent = "Option 2";
+
+        select.appendChild(option1);
+        select.appendChild(option2);
+
+        var submitButton = document.createElement("button");
+        submitButton.type = "button";
+        submitButton.textContent = "Submit";
+        submitButton.className = "submitBtn";
+
+        form.appendChild(textarea);
+        form.appendChild(password);
+        form.appendChild(select);
+        form.appendChild(submitButton);
+
+        document.body.appendChild(form);
+
+        textarea.onblur = convertToUppercase;
+        select.onchange = showSelectedValue;
+        submitButton.onclick = hideForm;
+
+        function convertToUppercase() {
+            var textarea = document.getElementById("textarea1");
+            textarea.value = textarea.value.toUpperCase();
+        }
+
+        function showSelectedValue() {
+            var select = document.getElementById("select1");
+            var selectedValue = select.value;
+            alert("You selected: " + selectedValue);
+        }
+
+        function hideForm() {
+            var formElements = document.getElementsByClassName("submitBtn");
+            for (var i = 0; i < formElements.length; i++) {
+                formElements[i].parentElement.style.display = "none";
+            }
+            alert("Form has been submitted and hidden.");
+        }
+    }
+    
+</script>
+<body>
+    <script>
+        task10();
+    </script>
+</body>
+</html>
