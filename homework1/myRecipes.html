@@ -9,24 +9,7 @@
 </head>
 
 <body>
-    <div class="navbar">
-        <div class="dropdown">
-            <button class="dropbtn" onclick="location.href = 'index.html';">Home</button>
-        </div>
-
-        <div class="dropdown">
-            <button class="dropbtn active" onclick="location.href = 'myRecipes.html';">My List</button>
-            <div class="dropdown-content">
-                <a href="product.html?id=1">Lasagna</a>
-                <a href="product.html?id=2">Paella</a>
-                <a href="product.html?id=3">Plov</a>
-            </div>
-        </div>
-        <div class="dropdown" onclick="location.href = 'about.html';">
-            <button class="dropbtn">Contacts</button>
-        </div>
-
-    </div>
+    <div id="navbar-placeholder"></div>
 
 
     <div class="content" style="padding-top: 30px;">
@@ -155,6 +138,33 @@
     <div class="footer" style="margin-top: 200px;">
         <p>&copy; 2024 Your Website Name. All rights are protected</p>
     </div>
+
+    <script>
+        fetch('navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+    
+                const currentPath = window.location.pathname;
+                const navbarButtons = document.querySelectorAll('.navbar .dropbtn');
+
+                navbarButtons.forEach(button => {
+                    if (button.hasAttribute('onclick')) {
+                    const onclickValue = button.getAttribute('onclick');
+                    const match = onclickValue.match(/location\.href\s*=\s*'([^']+)'/);
+
+                        if (match && match[1]) {
+                            const url = match[1];
+
+                            if (url === currentPath || currentPath.includes(url)) {
+                                button.classList.add('active');
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
+    </script>
 </body>
 
 </html>

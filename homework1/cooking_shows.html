@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Cooking TV Shows</title>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="content"style="padding-top:60px">
+        <div class="carousel slide" id="carouselDemo" data-bs-wrap="true" data-bs-ride="carousel" data-bs-interval="5000">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/master_chef.jpg" class="w-100">
+                    <div class="carousel-caption">
+                        <h5>Master Chef</h5>
+                        <p>Ukrainian TV Show</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="img/Hell's_Kitchen.jpg" class="w-100">
+                    <div class="carousel-caption">
+                        <p>American TV Show</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="img/MKR.png" class="w-100">
+                    <div class="carousel-caption">
+                        <h5>My Kitchen Rules</h5>
+                        <p>Australian TV Show</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselDemo" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselDemo" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+
+            <div class="carousel-indicators">
+                <button type="button" class="active" data-bs-target="#carouselDemo" data-bs-slide-to="0">
+                </button>
+
+                <button type="button" data-bs-target="#carouselDemo" data-bs-slide-to="1">
+                </button>
+
+                <button type="button" data-bs-target="#carouselDemo" data-bs-slide-to="2">
+                </button>
+            </div>
+
+        </div>
+
+        <div style="display: flex; justify-content: center; margin-top: 20px;">
+            <a class="more_shows" href='full_cooking_shows.html'>More</a>
+        </div>
+
+
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Your Website Name. All rights are protected</p>
+    </div>
+
+    <script>
+        fetch('navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+
+                const currentPath = window.location.pathname;
+                const navbarButtons = document.querySelectorAll('.navbar .dropbtn');
+
+                navbarButtons.forEach(button => {
+                    if (button.hasAttribute('onclick')) {
+                        const onclickValue = button.getAttribute('onclick');
+                        const match = onclickValue.match(/location\.href\s*=\s*'([^']+)'/);
+
+                        if (match && match[1]) {
+                            const url = match[1];
+
+                            if (url === currentPath || currentPath.includes(url)) {
+                                button.classList.add('active');
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
