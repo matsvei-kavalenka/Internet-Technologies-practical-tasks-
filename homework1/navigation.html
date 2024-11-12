@@ -1,10 +1,10 @@
 <div class="navbar">
-    <div class="dropdown">
+    <div class="dropdown-container">
         <button class="dropbtn" onclick="location.href = 'index.html';">Home</button>
     </div>
 
-    <div class="dropdown">
-        <button class="dropbtn" onclick="location.href = 'myRecipes.html';">My List</button>
+    <div class="dropdown-container">
+        <button class="dropbtn" onclick="location.href = 'recipes_page1.html';">My List</button>
         <div class="dropdown-content">
             <a href="product.html?id=1">Lasagna</a>
             <a href="product.html?id=2">Paella</a>
@@ -12,18 +12,15 @@
         </div>
     </div>
 
-    
-
-    <div class="dropdown">
+    <div class="dropdown-container">
         <button class="dropbtn" onclick="location.href = 'cooking_shows.html';">Cooking Shows</button>
     </div>
 
-    <div class="dropdown">
+    <div class="dropdown-container">
         <button class="dropbtn" onclick="location.href = 'contact_us.html';">Contacts</button>
     </div>
 
-    <div class="dropdown">
-        <button class="dropbtn" onclick="location.href = 'about.html';">About Us</button>
-    </div>
-    
+    <form class="navbar-search" action="search.html" method="GET">
+        <input type="text" class="search-query span2"  name="query" placeholder="Search">
+    </form>
 </div>

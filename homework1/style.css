@@ -10,6 +10,10 @@ img {
     -webkit-user-select: none;
 }
 
+p {
+    margin-bottom: auto;
+}
+
 .navbar {
     position: fixed;
     display: flex;
@@ -27,7 +31,12 @@ img {
     background-color: white;
 }
 
-.dropdown {
+.navbar-search {
+    margin-left: 5%;
+    width: 15%;
+}
+
+.dropdown-container {
     float: left;
     overflow: hidden;
 }
@@ -42,6 +51,25 @@ img {
     margin: 0;
     cursor: pointer;
 }
+
+@media (max-width: 500px) {
+    .navbar {
+        position: relative;
+        height: 120px;
+        flex-wrap: wrap;
+    }
+
+    .navbar-search {
+        width: 50%;
+        margin-left: 10%;
+    }
+
+    .dropbtn {
+        font-size: 22px;
+        padding: 10px 10px;
+    }
+}
+
 
 .dropbtn.active {
     text-decoration: underline;
@@ -76,7 +104,7 @@ img {
     text-decoration: underline;
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown-container:hover .dropdown-content {
     display: block;
     position: fixed;
 }
@@ -86,7 +114,13 @@ img {
     position: relative;
     width: 100%;
     border: none;
+    min-height: calc(100vh - 120px);
+}
 
+@media (max-width: 500px) {
+    .content {
+        top: 0px;
+    }
 }
 
 .recipes {
@@ -384,10 +418,16 @@ img {
     min-height: 90vh;
 }
 
+@media (max-width: 500px) {
+    .contact {
+        top: 0;
+    }
+}
+
 .contacts__single {
     display: flex;
     flex-direction: column;
-    margin-bottom: 200px;
+    margin-bottom: 50px;
 }
 
 .block {
@@ -406,7 +446,7 @@ img {
 }
 
 
-form {
+#contactForm {
     width: 400px;
     max-width: 95%;
     margin: 0;
@@ -644,17 +684,42 @@ textarea {
     border: 3px solid black;
 }
 
+@media (max-width: 500px) {
+    .carousel {
+        width: 90%;
+        margin: 0 5% 0 5%;
+    }
+}
+
 .carousel-item {
     transition: transform 0.6s ease-in-out;
 }
 
 
-.more_shows{
+.more_shows {
     font-size: 25px;
     margin-bottom: 30px;
 }
+
+.col-md-6 {
+    padding: 15px;
+}
+
+.container {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+#searchItem {
+    margin: 0 10% 0 10%;
+}
+
+.dropdown {
+    margin-top: 20px;
+}
+
 .footer {
-    position: fixed;
     bottom: 0;
     margin-top: 60px;
     padding-left: 15px;
@@ -664,4 +729,10 @@ textarea {
     font-family: "SE Inter", "Space Grotesk", Helvetica, sans-serif;
     font-size: 14px;
     padding-top: 10px;
+}
+
+@media (max-width: 500px) {
+    .footer {
+        margin-top: 0px;
+    }
 }

@@ -23,58 +23,8 @@
                 if (product) {
                     // --------------------navbar--------------------
                     const navbarDiv = document.createElement('div');
-                    navbarDiv.classList.add('navbar');
+                    navbarDiv.setAttribute('id', 'navbar-placeholder');
 
-                    const dropdownDiv = document.createElement('div');
-                    navbarDiv.appendChild(dropdownDiv);
-                    dropdownDiv.classList.add('dropdown');
-
-                    const dropbtn = document.createElement('button');
-                    dropbtn.classList.add('dropbtn');
-                    dropbtn.onclick = () => location.href = 'index.html';
-                    dropbtn.textContent = 'Home';
-                    navbarDiv.appendChild(dropbtn);
-
-                    const dropdownDiv2 = document.createElement('div');
-                    navbarDiv.appendChild(dropdownDiv2);
-                    dropdownDiv2.classList.add('dropdown');
-
-                    const dropbtn2 = document.createElement('button');
-                    dropbtn2.classList.add('dropbtn');
-                    dropbtn2.classList.add('active');
-                    dropbtn2.onclick = () => location.href = 'myRecipes.html';
-                    dropbtn2.textContent = 'My List';
-                    dropdownDiv2.appendChild(dropbtn2);
-
-                    const dropdownContent = document.createElement('div');
-                    dropdownContent.classList.add('dropdown-content');
-                    dropdownDiv2.appendChild(dropdownContent);
-
-                    const link1 = document.createElement('a');
-                    link1.href = 'product.html?id=1';
-                    link1.textContent = 'Lasagna';
-
-                    const link2 = document.createElement('a');
-                    link2.href = 'product.html?id=2';
-                    link2.textContent = 'Paella';
-
-                    const link3 = document.createElement('a');
-                    link3.href = 'product.html?id=3';
-                    link3.textContent = 'Plov';
-
-                    dropdownContent.appendChild(link1);
-                    dropdownContent.appendChild(link2);
-                    dropdownContent.appendChild(link3);
-
-                    const dropdownDiv3 = document.createElement('div');
-                    navbarDiv.appendChild(dropdownDiv3);
-                    dropdownDiv3.classList.add('dropdown');
-                    dropdownDiv3.onclick = () => location.href = 'about.html';
-
-                    const dropbtn3 = document.createElement('button');
-                    dropbtn3.classList.add('dropbtn');
-                    dropbtn3.textContent = 'Contacts';
-                    dropdownDiv3.appendChild(dropbtn3);
 
                     // --------------------product_full--------------------
 
@@ -165,6 +115,33 @@
                 }
             })
             .catch(error => console.error('Error loading JSON:', error));
+
+        fetch('navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+
+                const currentPath = window.location.pathname;
+                const navbarButtons = document.querySelectorAll('.navbar .dropbtn');
+
+                navbarButtons.forEach(button => {
+                    if (button.hasAttribute('onclick')) {
+                        const onclickValue = button.getAttribute('onclick');
+                        const match = onclickValue.match(/location\.href\s*=\s*'([^']+)'/);
+
+                        if (match && match[1]) {
+                            const url = match[1];
+
+                            console.log(currentPath, url)
+
+                            if (url == "recipes_page1.html") {
+                                button.classList.add('active');
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
 
     </script>
 

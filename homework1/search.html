@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/img/chef-hat.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Cook What You Crave</title>
+</head>
+
+<body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="content" style="padding-top: 30px;">
+        <h1 id="searchItem" style="font-size: 48px;padding-bottom: 20px;"></h1>
+
+        <div id="searchResults" class="recipes">
+            <!-- Results will be displayed here -->
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 Your Website Name. All rights are protected</p>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        fetch('navigation.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navbar-placeholder').innerHTML = data;
+
+                const currentPath = window.location.pathname;
+                const navbarButtons = document.querySelectorAll('.navbar .dropbtn');
+
+                navbarButtons.forEach(button => {
+                    if (button.hasAttribute('onclick')) {
+                        const onclickValue = button.getAttribute('onclick');
+                        const match = onclickValue.match(/location\.href\s*=\s*'([^']+)'/);
+
+                        if (match && match[1]) {
+                            const url = match[1];
+
+                            if (url === "recipes_page1.html") {
+                                button.classList.add('active');
+                            }
+                        }
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading the navbar:', error));
+    </script>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('query').toLowerCase();
+        document.getElementById('searchItem').innerText = `Search results for: "${query}"`;
+
+        fetch('products.json')
+            .then(response => response.json())
+            .then(dishes => {
+                const dishesArray = Object.values(dishes);
+                console.log(dishesArray);
+                const results = dishesArray.filter(dish =>
+                    dish.name.toLowerCase().includes(query)
+                );
+
+                displayResults(results);
+            })
+            .catch(error => {
+                console.error('Error fetching or searching dishes:', error);
+            });
+
+
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<p>No dishes found.</p>';
+                return;
+            }
+            console.log(results);
+            results.forEach(dish => {
+                const dishElement = document.createElement('div');
+                dishElement.classList.add('short_recipe_info');
+
+                const imgElement = document.createElement('img');
+                imgElement.classList.add('dish');
+                imgElement.src = dish.smaller_img;
+                imgElement.alt = dish.name;
+
+                const recipeContent = document.createElement('div');
+                recipeContent.classList.add('recipe_content');
+
+                const titleDiv = document.createElement('div');
+                titleDiv.classList.add('title_div');
+
+                const titleElement = document.createElement('h3');
+                titleElement.innerText = dish.name;
+
+                const timeDiv = document.createElement('div');
+                timeDiv.classList.add('time');
+
+                const clockImg = document.createElement('img');
+                clockImg.src = '/img/clock.png';
+                clockImg.alt = 'clock';
+
+                const timeText = document.createElement('p');
+                timeText.innerText = dish.time;
+
+                timeDiv.appendChild(clockImg);
+                timeDiv.appendChild(timeText);
+
+                const descriptionElement = document.createElement('p');
+                descriptionElement.innerText = dish.description || 'No description available.';
+
+                titleDiv.appendChild(titleElement);
+                titleDiv.appendChild(timeDiv);
+                titleDiv.appendChild(descriptionElement);
+
+                const readMoreLink = document.createElement('a');
+                readMoreLink.href = `product.html?id=${dish.id}`;
+                readMoreLink.innerText = 'Read more';
+
+                recipeContent.appendChild(titleDiv);
+                recipeContent.appendChild(readMoreLink);
+                dishElement.appendChild(imgElement);
+                dishElement.appendChild(recipeContent);
+
+                resultsContainer.appendChild(dishElement);
+            });
+        }
+    </script>
+
+</body>
+
+</html>

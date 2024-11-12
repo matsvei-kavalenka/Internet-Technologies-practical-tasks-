@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/img/chef-hat.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>My recipes</title>
+    <title>Contacts</title>
 
 </head>
 
@@ -67,35 +69,41 @@
                 </button>
             </div>
         </form>
-        
+
         <div id="responseMessage"></div>
+
+
         <script>
-            document.getElementById('contactForm').addEventListener('submit', function(event) {
+            document.getElementById('contactForm').addEventListener('submit', function (event) {
                 event.preventDefault();
-        
+
                 const submitButton = document.getElementById('submitBtn');
+
+                const firstName = document.getElementById('first_name').value;
+                const email = document.getElementById('email').value;
+
+                const namePattern = /^[a-zA-Z]+$/;
+                const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+                if (!namePattern.test(firstName)) {
+                    alert("Please enter a valid first name (only letters allowed).");
+                    submitButton.blur();
+                    return;
+                }
+
+                if (!emailPattern.test(email)) {
+                    alert("Please enter a valid email address.");
+                    submitButton.blur();
+                    return;
+                }
+
+
                 submitButton.focus();
-        
-                setTimeout(async function() {
-                    const formData = new FormData(this);
-        
-                    try {
-                        const response = await fetch('/your-server-endpoint', {
-                            method: 'POST',
-                            body: formData,
-                        });
-        
-                        if (response.ok) {
-                            const result = await response.json();
-                            document.getElementById('responseMessage').innerText = result.message;
-                        } else {
-                            throw new Error('Network response was not ok');
-                        }
-                    } catch (error) {
-                        console.error('There was a problem with your fetch operation:', error);
-                    }
-                    location.reload()
-                }.bind(this), 2000);
+
+                setTimeout(function () {
+                    alert("Form submitted successfully!");
+                    window.location.href = 'contact_us.html'
+                }, 2000);
             });
         </script>
     </div>
@@ -108,14 +116,14 @@
             .then(response => response.text())
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
-    
+
                 const currentPath = window.location.pathname;
                 const navbarButtons = document.querySelectorAll('.navbar .dropbtn');
 
                 navbarButtons.forEach(button => {
                     if (button.hasAttribute('onclick')) {
-                    const onclickValue = button.getAttribute('onclick');
-                    const match = onclickValue.match(/location\.href\s*=\s*'([^']+)'/);
+                        const onclickValue = button.getAttribute('onclick');
+                        const match = onclickValue.match(/location\.href\s*=\s*'([^']+)'/);
 
                         if (match && match[1]) {
                             const url = match[1];
