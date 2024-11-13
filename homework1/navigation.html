@@ -1,26 +1,40 @@
-<div class="navbar">
-    <div class="dropdown-container">
-        <button class="dropbtn" onclick="location.href = 'index.html';">Home</button>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="dropdown-container">
-        <button class="dropbtn" onclick="location.href = 'recipes_page1.html';">My List</button>
-        <div class="dropdown-content">
-            <a href="product.html?id=1">Lasagna</a>
-            <a href="product.html?id=2">Paella</a>
-            <a href="product.html?id=3">Plov</a>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <title>Navigation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="dropdown-container">
+            <button class="dropbtn" onclick="location.href = 'index.html';">Home</button>
         </div>
-    </div>
 
-    <div class="dropdown-container">
-        <button class="dropbtn" onclick="location.href = 'cooking_shows.html';">Cooking Shows</button>
-    </div>
+        <div class="dropdown-container">
+            <button class="dropbtn" onclick="location.href = 'recipes_page1.html';">My List</button>
+            <div class="dropdown-content">
+                <a href="product.html?id=1">Lasagna</a>
+                <a href="product.html?id=2">Paella</a>
+                <a href="product.html?id=3">Plov</a>
+            </div>
+        </div>
 
-    <div class="dropdown-container">
-        <button class="dropbtn" onclick="location.href = 'contact_us.html';">Contacts</button>
-    </div>
+        <div class="dropdown-container">
+            <button class="dropbtn" onclick="location.href = 'cooking_shows.html';">Cooking Shows</button>
+        </div>
 
-    <form class="navbar-search" action="search.html" method="GET">
-        <input type="text" class="search-query span2"  name="query" placeholder="Search">
-    </form>
-</div>
+        <div class="dropdown-container">
+            <button class="dropbtn" onclick="location.href = 'contact_us.html';">Contacts</button>
+        </div>
+
+        <form class="navbar-search" action="search.html" method="GET">
+            <input type="text" class="search-query span2" name="query" placeholder="Search" autocomplete="off">
+        </form>
+    </div>
+</body>
+
+</html>

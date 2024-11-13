@@ -76,7 +76,11 @@
         <script>
             document.getElementById('contactForm').addEventListener('submit', function (event) {
                 event.preventDefault();
+                checkForm();
+                
+            });
 
+            function checkForm() {
                 const submitButton = document.getElementById('submitBtn');
 
                 const firstName = document.getElementById('first_name').value;
@@ -97,14 +101,17 @@
                     return;
                 }
 
+                submitForm(submitButton);
+            }
 
+            function submitForm(submitButton) {
                 submitButton.focus();
 
                 setTimeout(function () {
                     alert("Form submitted successfully!");
-                    window.location.href = 'contact_us.html'
+                    window.location.href = 'index.html';
                 }, 2000);
-            });
+            }
         </script>
     </div>
     <div class="footer">

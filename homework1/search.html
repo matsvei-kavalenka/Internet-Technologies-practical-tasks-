@@ -14,7 +14,7 @@
     <div id="navbar-placeholder"></div>
 
     <div class="content" style="padding-top: 30px;">
-        <h1 id="searchItem" style="font-size: 48px;padding-bottom: 20px;"></h1>
+        <h1 id="searchItem" style="font-size: 48px;padding-bottom: 20px;">""</h1>
 
         <div id="searchResults" class="recipes">
             <!-- Results will be displayed here -->
@@ -34,7 +34,6 @@
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
 
-                const currentPath = window.location.pathname;
                 const navbarButtons = document.querySelectorAll('.navbar .dropbtn');
 
                 navbarButtons.forEach(button => {

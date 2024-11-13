@@ -711,9 +711,16 @@ textarea {
     justify-content: center;
 }
 
-#searchItem {
-    margin: 0 10% 0 10%;
+@media (max-width: 500px) {
+    #searchItem {
+        margin: 0 10% 0 10%;
+    }
 }
+
+#searchItem {
+    margin-left: 20px;
+}
+
 
 .dropdown {
     margin-top: 20px;

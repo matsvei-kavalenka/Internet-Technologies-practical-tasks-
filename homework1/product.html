@@ -121,7 +121,6 @@
             .then(data => {
                 document.getElementById('navbar-placeholder').innerHTML = data;
 
-                const currentPath = window.location.pathname;
                 const navbarButtons = document.querySelectorAll('.navbar .dropbtn');
 
                 navbarButtons.forEach(button => {
@@ -131,8 +130,6 @@
 
                         if (match && match[1]) {
                             const url = match[1];
-
-                            console.log(currentPath, url)
 
                             if (url == "recipes_page1.html") {
                                 button.classList.add('active');
