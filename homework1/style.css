@@ -726,6 +726,21 @@ textarea {
     margin-top: 20px;
 }
 
+.hidden {
+    opacity: 0;
+}
+
+.short_recipe_info.recipe_animation {
+    transition: opacity 1s, transform 1s;
+    transform: translateY(-50px);
+}
+
+.short_recipe_info.recipe_animation.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
 .footer {
     bottom: 0;
     margin-top: 60px;

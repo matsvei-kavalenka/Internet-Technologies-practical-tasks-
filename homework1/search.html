@@ -14,7 +14,7 @@
     <div id="navbar-placeholder"></div>
 
     <div class="content" style="padding-top: 30px;">
-        <h1 id="searchItem" style="font-size: 48px;padding-bottom: 20px;">""</h1>
+        <h1 id="searchItem" class="hidden" style="font-size: 48px;padding-bottom: 20px;">""</h1>
 
         <div id="searchResults" class="recipes">
             <!-- Results will be displayed here -->
@@ -87,6 +87,8 @@
             results.forEach(dish => {
                 const dishElement = document.createElement('div');
                 dishElement.classList.add('short_recipe_info');
+                dishElement.classList.add('recipe_animation');
+                dishElement.classList.add('hidden');
 
                 const imgElement = document.createElement('img');
                 imgElement.classList.add('dish');
@@ -134,6 +136,26 @@
                 resultsContainer.appendChild(dishElement);
             });
         }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                const h1 = document.getElementById("searchItem");
+                h1.classList.remove("hidden");
+            }, 1000);
+
+
+            setTimeout(() => {
+                const cards = document.getElementsByClassName('short_recipe_info');
+                console.log(cards)
+                Array.from(cards).forEach(card => {
+                    card.classList.remove("hidden");
+                    card.classList.add("visible");
+                });
+
+            }, 1500);
+
+        });
+
     </script>
 
 </body>
