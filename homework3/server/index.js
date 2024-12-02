@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
-const cors=require('cors'); 
+const cors = require('cors');
 
-app.use(cors()); 
+app.use(cors());
 app.use(express.json());
 
 app.listen(3001, () => {
@@ -33,35 +33,63 @@ app.get("/getUsers", (req, res) => {
     })
 });
 
-app.post("/createUser", async (req, res)=>{ 
-    const user = req.body; 
-    const newUser = new UserModel (user); 
-    await newUser.save(); 
-    res.json(user) 
-}); 
+app.post("/createUser", async (req, res) => {
+    const user = req.body;
+    const newUser = new UserModel(user);
+    await newUser.save();
+    res.json(user)
+});
 
-app.delete("/deleteUser", async (req, res)=>{
+app.put("/updateUser", async (req, res) => {
+    console.log(req.body);
+    const { id, name, age, username, email } = req.body;
+
+    try {
+        const updatedDocument = await UserModel.findByIdAndUpdate(
+            id,
+            { name, age, username, email },
+            { new: true }
+        );
+        if (!updatedDocument) {
+            return res.status(404).send({ error: 'Document not found' });
+        }
+        res.status(200).send(updatedDocument);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ error: 'An error occurred' });
+    }
+});
+
+app.put("/updateUserLanguages", async (req, res) => {
+    console.log(req.body);
+    const { id, userId, languages } = req.body;
+
+    try {
+        const updatedDocument = await LanguagesModel.findByIdAndUpdate(
+            id,
+            { userId, languages },
+            { new: true }
+        );
+        if (!updatedDocument) {
+            return res.status(404).send({ error: 'Document not found' });
+        }
+        res.status(200).send(updatedDocument);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send({ error: 'An error occurred' });
+    }
+});
+
+app.delete("/deleteUser", async (req, res) => {
     try {
         const id = req.body.id;
         await UserModel.findByIdAndDelete(id);
         res.status(200).send("User deleted");
-      } catch (error) {
+    } catch (error) {
         console.error("Error deleting user:", error);
         res.status(500).send("An error occurred while deleting the user.");
-      }
+    }
 });
-
-app.delete("/deleteUserLanguages", async (req, res)=>{
-    try {
-        const id = req.body.id;
-        await LanguagesModel.findByIdAndDelete(id);
-        res.status(200).send("Languages deleted");
-      } catch (error) {
-        console.error("Error deleting languages:", error);
-        res.status(500).send("An error occurred while deleting the user.");
-      }
-});
-
 
 app.get("/getAllLanguages", (req, res) => {
     LanguagesModel.find().then(function (response) {
@@ -79,9 +107,21 @@ app.get("/getLanguagesById", (req, res) => {
     })
 });
 
-app.post("/addLanguages", async (req, res)=>{ 
-    const languages = req.body; 
-    const newLanguages = new LanguagesModel (languages); 
-    await newLanguages.save(); 
-    res.json(languages) 
+app.post("/addLanguages", async (req, res) => {
+    const languages = req.body;
+    const newLanguages = new LanguagesModel(languages);
+    await newLanguages.save();
+    res.json(languages)
 }); 
+
+
+app.delete("/deleteUserLanguages", async (req, res) => {
+    try {
+        const id = req.body.id;
+        await LanguagesModel.findByIdAndDelete(id);
+        res.status(200).send("Languages deleted");
+    } catch (error) {
+        console.error("Error deleting languages:", error);
+        res.status(500).send("An error occurred while deleting the user.");
+    }
+});
