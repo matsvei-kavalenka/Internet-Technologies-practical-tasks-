@@ -1,103 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Jaro:opsz@6..72&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
-
-
-body{
-  padding: 20px;
-  font-family: "Titillium Web", sans-serif; /* Google font */
-  background: linear-gradient(135deg, #89cff0, #ffffff); /* gradient */
-}
-
-.App {
-  text-align: center;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-
-.userDisplay {
-  
-  margin: 20px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-}
-
-.userDisplay h1 {
-  margin: 10px 0;
+/* General body styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
   color: #333;
 }
 
-
-.user-form {
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-  padding: 20px;
-}
-
-.user-languages-form{
-  display: flex;
-  flex-direction: column;
-  margin: 20px;
-  padding: 20px;
-}
-
-/* Styled the input fields for presentable appearance */
-input[type="text"],
-input[type="number"],
-input[type="email"],
-input[type="date"] {
-  display: block;
-  width: 300px;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-button:hover {
-  background-color: #0056b3;
-}
-
-
-input::placeholder {
-  color: blue;
-}
-
-input:invalid {
-  background-color: lightgray;
-}
-
-.btn-container{
-  position: relative;
-  display: flex;
-  margin: 0;
-}
-
-
-button {
+/* Navbar container */
+nav {
+  background-color: #66affc;
   padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 5px;
-  background-color: #007bff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li {
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  text-decoration: none;
   color: white;
   font-size: 16px;
-  cursor: pointer;
+  font-weight: bold;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+}
+
+nav ul li a.active {
+  background-color: #0056b3;
+  color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  nav ul li a {
+    display: block;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
